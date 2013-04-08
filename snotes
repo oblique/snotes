@@ -44,6 +44,9 @@ SNOTES_CLEANUP="yes"
 
 # how many commits should be shown for "changed:note"
 SNOTES_CHANGED_COMMITS=2
+
+# do `git push' after `git commit'
+#SNOTES_GITPUSH="yes"
 EOF
 fi
 

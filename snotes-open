@@ -127,6 +127,7 @@ created)
     if [ -s "$snotes_file" ]; then
         git add -- "$snotes_file"
         git commit -q -m "created note '$snotes_file'"
+        [ "${SNOTES_GITPUSH}" = "yes" ] && git push
     else
         rm -f "$snotes_file"
     fi
@@ -137,11 +138,13 @@ temp)
 deleted)
     git rm -q -f -- "$snotes_file"
     git commit -q -m "removed note '$snotes_file'"
+    [ "${SNOTES_GITPUSH}" = "yes" ] && git push
     ;;
 *)
     if ! git diff --quiet -- "$snotes_file"; then
         git add -- "$snotes_file"
         git commit -q -m "changed note '$snotes_file'"
+        [ "${SNOTES_GITPUSH}" = "yes" ] && git push
     fi
     ;;
 esac
